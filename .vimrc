@@ -23,13 +23,16 @@ behave mswin
         ""set noswapfile
     ""}
     colorscheme desert
+    colorscheme molokai
     ""Mudar a cor da coluna 80{
         ""set colorcolumn=80
         ""highlight ColorColumn ctermbg=DarkGray guibg=DarkGray
     ""}
     ""Mudar a font no gvim{
         if has('gui_running')
-          set guifont=Monospace\ 11
+            colorscheme monokai
+            set guioptions -=m
+            set guioptions -=T
         endif
     ""}
     ""Rebind Ctrl+V para Ctrl+Q{
