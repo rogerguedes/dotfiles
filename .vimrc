@@ -22,8 +22,11 @@ behave mswin
     ""Desabilita a criacao de arquivo de swap{
         ""set noswapfile
     ""}
-    colorscheme desert
-    colorscheme molokai
+    if &diff
+        colorscheme desert
+    else
+        colorscheme molokai
+    endif
     ""Mudar a cor da coluna 80{
         ""set colorcolumn=80
         ""highlight ColorColumn ctermbg=DarkGray guibg=DarkGray
