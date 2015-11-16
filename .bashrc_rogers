@@ -62,3 +62,7 @@ montarHD(){
     sudo mount UUID=738B34C677155CF4 /mnt/myDisk -t ntfs -o rw,auto,uid=1001,gid=1,dmode=775,fmode=775,fmask=0002,dmask=0002
 }
 
+getIP(){
+    ip addr|grep -i $1":" -A2|grep "inet"|sed "s/^\s*inet\s\([0-9\.]\+\).*/\1/ig"|tr -d "\n"
+}
+
