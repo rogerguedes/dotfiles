@@ -76,5 +76,7 @@ behave mswin
         set foldlevel=1         "this is just what i use
     ""}
 
+    set showtabline=2 ""always show tabs
+
 " Rogers Custom Config End
 

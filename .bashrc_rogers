@@ -52,9 +52,9 @@ getRoots(){
     sed -e 's@/.*@@' | uniq
 }
 
-chromeKiller(){
-    while pgrep chrome ; do pkill chrome ; done;
-    echo "Chrome was successful killed";
+killItAnyway(){
+    while pgrep $1 ; do pkill $1 ; done;
+    echo $1" was successful killed";
 }
 
 montarHD(){
