@@ -77,6 +77,11 @@ behave mswin
     ""}
 
     set showtabline=2 ""always show tabs
+    
+    ""{ makes VIM lists possible file paths whem you are specifying a file path on command mode
+        set wildmode=longest,list,full
+        set wildmenu
+    ""}
 
 " Rogers Custom Config End
 
