@@ -2,6 +2,9 @@
 #if [ -r ~/.bashrc_rogers ]; then
 #    source ~/.bashrc_rogers
 #fi
+
+alias ls='ls --color=auto'
+
 if [ "$TMUX" = "" ]; then 
     TERM=xterm-256color
 fi
