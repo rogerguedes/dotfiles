@@ -66,3 +66,8 @@ getIP(){
     ip addr|grep -i $1":" -A2|grep "inet"|sed "s/^\s*inet\s\([0-9\.]\+\).*/\1/ig"|tr -d "\n"
 }
 
+runSshAgent(){
+    #this command are needed to use ssh and all the uses it on cygwin. After run it, run 'ssh-add [pathToYourPrivKey]'
+    eval `ssh-agent -s`
+}
+
