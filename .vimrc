@@ -82,6 +82,8 @@ behave mswin
         set wildmode=longest,list,full
         set wildmenu
     ""}
+    
+    set noundofile ""Disable undo file (.un~) creation.
 
 " Rogers Custom Config End
 
