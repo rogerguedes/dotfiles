@@ -48,6 +48,11 @@ behave mswin
     "" Bind F2 key to save and execute the current file{
         map <F2> <Esc>:w<CR>:! clear &&./%\|less -N<CR>
     ""}
+    
+    "" Bind F2 key to save and execute the current file{
+        nnoremap <F3> <Esc>:w<CR>:! clear &&./%<CR>
+        inoremap <F3> <Esc>:w<CR>:! clear &&./%<CR>
+    ""}
 
     "" When using !, makes vim load users bash files{
     if filereadable($HOME."/.bashrc") && &diff == 'nodiff'
@@ -84,6 +89,10 @@ behave mswin
     ""}
     
     set noundofile ""Disable undo file (.un~) creation.
+    ""{delete without put on default register
+        nnoremap <leader>d "_d
+        vnoremap <leader>d "_d
+    ""{
 
 " Rogers Custom Config End
 
