@@ -1,0 +1,24 @@
+binPlaces=(
+/bin
+/sbin
+/usr/bin
+/usr/sbin
+/usr/local/bin
+/usr/local/sbin
+)
+
+for i in ${binPlaces[@]}
+do
+    echo $PATH|sed "s/:/\n/ig"|grep ^${i}$ > /dev/null 2>&1
+    if [ "$?" -ne "0" ]; then
+        # echo "${i} is not in PATH"
+        if [ -d "${i}" ] ; then
+            PATH="${i}:$PATH"
+            # echo "${i} exists. adding it to PATH"
+        # else
+            # echo "${i} does not exists. skiping..."
+        fi
+    fi
+done
+export PATH
+
