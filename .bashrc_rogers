@@ -3,30 +3,6 @@
 #    source ~/.bashrc_rogers
 #fi
 
-binPlaces=(
-/bin
-/sbin
-/usr/bin
-/usr/sbin
-/usr/local/bin
-/usr/local/sbin
-)
-
-for i in ${binPlaces[@]}
-do
-    echo $PATH|sed "s/:/\n/ig"|grep ^${i}$ > /dev/null 2>&1
-    if [ "$?" -ne "0" ]; then
-        # echo "${i} is not in PATH"
-        if [ -d "${i}" ] ; then
-            PATH="${i}:$PATH"
-            # echo "${i} exists. adding it to PATH"
-        # else
-            # echo "${i} does not exists. skiping..."
-        fi
-    fi
-done
-export PATH
-
 alias ls='ls --color=auto'
 
 if [ "$TMUX" = "" ]; then 
@@ -98,3 +74,10 @@ runSshAgent(){
     eval `ssh-agent -s`
 }
 
+discendingDate(){
+    date '+%Y-%m-%d'
+}
+
+discendingDateAndTime(){
+    date '+%Y-%m-%d.%k.%M.%S'
+}
