@@ -94,5 +94,12 @@ behave mswin
         vnoremap <leader>d "_d
     ""{
 
+    ""{ fast variable rename. Thanks to https://stackoverflow.com/questions/597687/changing-variable-names-in-vim
+        " For local replace
+        nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+        " For global replace
+        nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+    ""}
+
 " Rogers Custom Config End
 
