@@ -1,3 +1,8 @@
+#Use this to source your custom script in your current .profile
+# if [ -f "$HOME/.profile_rogers" ]; then
+#     . "$HOME/.profile_rogers"
+# fi
+
 binPlaces=(
 /bin
 /sbin
