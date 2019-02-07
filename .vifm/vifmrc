@@ -1,0 +1,22 @@
+fileview */ tree %c
+nnoremap w :view<cr>
+
+" https://wiki.vifm.info/index.php/How_to_copy_path_to_current_file/directory_to_system_clipboard
+" yank current directory path into the clipboard
+nnoremap yd :!echo -n %d | xclip %i<cr>
+
+" yank current file path into the clipboard
+nnoremap yf :!echo -n %c:p | xclip %i<cr>
+
+" yank current filename without path into the clipboard
+nnoremap yn :!echo -n %c | xclip %i<cr>
+
+" yank root of current file's name into the clipboard
+nnoremap yr :!echo -n %c:r | xclip %i<cr>
+
+set ignorecase "makes saerch case insensitive
+
+"only "make vifm always open  in single pane mode: https://stackoverflow.com/questions/40093397/how-to-display-only-one-pane-in-vifm-instead-of-two
+
+filetype *.dia dia "https://unix.stackexchange.com/questions/124811/is-there-an-open-with-command-for-the-command-line
+
