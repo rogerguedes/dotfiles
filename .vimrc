@@ -23,13 +23,14 @@ behave mswin
         ""set noswapfile
     ""}
     if &diff
-        colorscheme desert
+        colorscheme molokai
+        " colorscheme desert
     else
         colorscheme molokai
     endif
     ""Mudar a cor da coluna 80{
-        ""set colorcolumn=80
-        ""highlight ColorColumn ctermbg=DarkGray guibg=DarkGray
+        set colorcolumn=120
+        highlight ColorColumn ctermbg=DarkGray guibg=DarkGray
     ""}
     ""Mudar a font no gvim{
         if has('gui_running')
@@ -46,7 +47,7 @@ behave mswin
         autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
     ""}
     "" Bind F2 key to save and execute the current file{
-        map <F2> <Esc>:w<CR>:! clear &&./%\|less -N<CR>
+        map <F2> <Esc>:w<CR>:! clear &&./% 2>&1\|less -N<CR>
     ""}
     
     "" Bind F2 key to save and execute the current file{
@@ -99,6 +100,21 @@ behave mswin
         nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
         " For global replace
         nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+    ""}
+    
+    ""{ Using Vim as hex editor. Thanks to https://vi.stackexchange.com/questions/343/how-to-edit-binary-files-with-vim
+        " Hex read
+        nnoremap HR :set binary<CR> :%!xxd<CR> :set filetype=xxd<CR>
+        " Hex write
+        nnoremap HW :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
+    ""}
+
+    ""{ Makes Ctrl-] open tag in a new tab. Thanks https://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
+        nnoremap <C-w><F5> <C-w><C-]><C-w>T
+        " vnoremap <C-]> <Esc>:tabnew %<CR>gvg<C-]>
+    ""}
+    ""Setting Astah Anycode Template Files to highlight like Groovy{
+        autocmd! BufNewFile,BufRead *.mda setlocal ft=groovy
     ""}
 
 " Rogers Custom Config End

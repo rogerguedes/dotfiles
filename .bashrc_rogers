@@ -9,13 +9,20 @@ if [ "$TMUX" = "" ]; then
     TERM=xterm-256color
 fi
 
-# JAVA_HOME=/opt/jdk1.7.0_51
+# JAVA_HOME=/opt/jdk1.8.0_171/
 # PATH=$PATH:$JAVA_HOME/bin
+
+export PKG_CONFIG_PATH=/home/rogers/usr/local/lib/pkgconfig
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\u@\h \[\033[96m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+if [ -n "${BASH}" ]; then 
+    export PS1="\u@\h \[\033[96m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+elif [ -n "${ZSH}" ]; then 
+    unset LESS
+fi
 
 whatismyip(){
     curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
@@ -62,7 +69,8 @@ killItAnyway(){
 
 montarHD(){
     #run 'sudo blkid -s UUID' to get the list of drivers and partitions with teir UUID
-    sudo mount UUID=738B34C677155CF4 /mnt/myDisk -t ntfs -o rw,auto,uid=1001,gid=1,dmode=775,fmode=775,fmask=0002,dmask=0002
+    # sudo mount UUID=$1 $2 -t ntfs -o rw,auto,uid=1002,gid=1002,dmode=775,fmode=775,fmask=0002,dmask=0002
+    sudo mount UUID=$1 $2 -o rw,auto,uid=1002,gid=1002,dmode=775,fmode=775,fmask=0002,dmask=0002
 }
 
 getIP(){
@@ -79,5 +87,49 @@ discendingDate(){
 }
 
 discendingDateAndTime(){
-    date '+%Y-%m-%d.%k.%M.%S'
+    date '+%Y-%m-%d.%H.%M.%S'
+}
+
+upgradeAndShutDown(){
+    sudo apt-get upgrade
+    poweroff
+}
+
+hdw_Cpu_getNumberOfCores(){
+  grep -c '^processor' /proc/cpuinfo
+}
+
+vicd() {
+    #Thanks to https://wiki.vifm.info/index.php/How_to_set_shell_working_directory_after_leaving_Vifm
+    # Since 0.8 {
+    vifm_new_pwd="$(command vifm --choose-dir - "$@")"
+    if [ -z "${vifm_new_pwd}" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    else
+        cd "${vifm_new_pwd}"
+    fi
+    #}
+    # # Since 0.8 {
+    # if [ -f ~/.vifm/lastdir ]; then
+    #     rm ~/.vifm/lastdir
+    # fi
+    # # "command" prevents recursive call
+    # command vifm "$@"
+    # if [ -f ~/.vifm/lastdir ]; then
+    #     cd `cat ~/.vifm/lastdir`
+    # fi
+    # #}
+}
+
+mktouch() {
+    if [ $# -lt 1 ]; then
+        echo "Missing argument";
+        return 1;
+    fi
+
+    for f in "$@"; do
+        mkdir -p -- "$(dirname -- "$f")"
+        touch -- "$f"
+    done
 }

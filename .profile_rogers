@@ -10,6 +10,14 @@ binPlaces=(
 /usr/sbin
 /usr/local/bin
 /usr/local/sbin
+$HOME/bin
+$HOME/sbin
+$HOME/usr/bin
+$HOME/usr/sbin
+$HOME/usr/local/bin
+$HOME/usr/local/sbin
+$HOME/.local/bin
+$HOME/.local/bin
 )
 
 for i in ${binPlaces[@]}

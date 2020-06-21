@@ -1,0 +1,26 @@
+# Brace Style: http://astyle.sourceforge.net/astyle.html https://en.wikipedia.org/wiki/Indentation_style
+--style=allman
+# Use space as indentation character
+--indent=spaces=4
+-s4
+# break a line if the code exceeds # characters.
+--max-code-length=120
+# Insert space padding around operators.
+--pad-oper
+# Indent switches' case blocks
+--indent-switches
+# Indent multi-line preprocessor definitions ending with a backslash.
+--indent-preproc-define
+# Indent line comments in the same level their code block
+--indent-col1-comments
+# Insert space padding between a header (e.g. 'if', 'for', 'while'...) and the following parenthesis.
+--pad-header
+# Insert space padding around paren on the inside only.
+--pad-paren-in
+# Attach a pointer or reference operator (*, &, or ^) to either the variable type (left) or variable name (right), or place it between the type and name (middle).
+--align-pointer=name
+# Add braces to unbraced one line conditional statements (e.g. 'if', 'for', 'while'...). 
+--add-brackets
+# C++ options
+--indent-classes
+

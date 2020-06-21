@@ -1,4 +1,4 @@
-fileview */ tree %c
+fileview */ tree -CpL 10 %c
 nnoremap w :view<cr>
 
 " https://wiki.vifm.info/index.php/How_to_copy_path_to_current_file/directory_to_system_clipboard
@@ -20,3 +20,6 @@ set ignorecase "makes saerch case insensitive
 
 filetype *.dia dia "https://unix.stackexchange.com/questions/124811/is-there-an-open-with-command-for-the-command-line
 
+command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
+
+set viewcolumns=*{name}..,16{mtime},7{}. "https://stackoverflow.com/questions/42267782/vifm-show-date-time-in-filelist
